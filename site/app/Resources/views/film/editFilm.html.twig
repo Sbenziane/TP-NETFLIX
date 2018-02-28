@@ -1,0 +1,17 @@
+<!-- app/Ressources/views/film/editFilm.html.twig -->
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h2>Le formulaire Edit de film</h2>
+    {{ form_start(formEdit) }}
+    {{ form_errors(formEdit) }}
+    <div>
+        {{ form_label(formEdit.video) }}
+        {{ form_errors(formEdit.video) }}
+        {{ form_widget(formEdit.video) }}
+    </div>
+    <div>
+        {{ form_row(form.image) }}
+    </div>
+    {{ form_end(formEdit) }}
+{% endblock %}

@@ -1,0 +1,11 @@
+<head>
+    <title></title>
+</head>
+<body>
+{%  include ('menu/menu.html.twig') %}
+{% for fiches in fiches %}
+    <p>{{ fiches.id }}</p>
+<h1>{{ fiches.titre }}</h1>
+<p>{{ fiches.description }}</p>
+{% endfor %}
+</body>

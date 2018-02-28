@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+        <h2>Le formulaire d'ajout de film</h2>
+        {{ form_start(formFilm) }}
+        {{ form_errors(formFilm) }}
+        <div>
+            {{ form_label(formFilm.video) }}
+            {{ form_errors(formFilm.video) }}
+            {{ form_widget(formFilm.video) }}
+        </div>
+        {{ form_end(formFilm) }}
+{% endblock %}

@@ -1,0 +1,12 @@
+
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    {% for films in films %}
+        <p>{{ films.FicheDescription.id }}</p>
+        <h1>{{ films.FicheDescription.titre }}</h1>
+        <p>{{ films.FicheDescription.description }}</p>
+        <p>{{ films.video }}</p>
+        <p>{{ films.image }}</p>
+    {% endfor %}
+{% endblock %}
