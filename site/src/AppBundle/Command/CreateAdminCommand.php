@@ -31,6 +31,7 @@ class CreateAdminCommand extends Command
         ->setHelp('This command allow you to create a user')
         ->addArgument( 'lastName', InputArgument::REQUIRED, 'User lastName.')
         ->addArgument( 'firstName', InputArgument::REQUIRED, 'User firstName.')
+        ->addArgument( 'username', InputArgument::REQUIRED, 'User username.')
         ->addArgument( 'email', InputArgument::REQUIRED, 'User email.')
         ->addArgument( 'password', InputArgument::REQUIRED, 'User password.')
         ;
@@ -39,15 +40,15 @@ class CreateAdminCommand extends Command
   protected function execute(InputInterface $input, OutputInterface $output)
   {
    $output->writeln([
-                'Create User',
+                'Create Admin',
                 '==============',
                 '',
               ]);
   $output->writeln('Whoa!');
   $output->write('You are about to ');
-  $output->write('create a user.');
-  $this->userManager->createUserFromCommand($input->getArgument('lastName'), $input->getArgument('firstName'), $input->getArgument('email'), $input->getArgument('password'));
-  $output->writeln('User successfully created!');
+  $output->write('create a admin.');
+  $this->userManager->createUserFromCommand($input->getArgument('lastName'), $input->getArgument('firstName'), $input->getArgument('username'),$input->getArgument('email'), $input->getArgument('password'));
+  $output->writeln('Admin successfully created!');
   }
 
 }

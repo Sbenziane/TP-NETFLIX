@@ -54,10 +54,11 @@ class SecurityController extends Controller
         $em = $this->getDoctrine()->getManager();
         $password = $user->getPassword();
         $user->setPassword($passwordEncoder->encodePassword($user, $password));
+        $user->setIsAdmin(false);
         $em->persist($user);
         $em->flush();
 
-        return $this->redirectToRoute('movie_list');
+        return $this->redirectToRoute('film_list');
       }
 
       //// Return pour afficher dans le template
