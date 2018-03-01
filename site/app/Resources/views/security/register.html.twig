@@ -1,16 +1,8 @@
 <html>
-  <head>
-          <title>Inscription </title>
-  </head>
-   <body>
-      {{ form_start(form) }}
-        {{ form_errors(form) }}
-          <div>
-          {{ form_label(form.name) }}
-          {{ form_errors(form.name) }}
-          {{ form_widget(form.name) }}
-         </div>
-         {# ... #}
-         {{ form_end(form) }}
-  </body>
+    <head>      
+    <title>Ajout d'un projet</title>
+    </head>
+    <body>
+  {{ form(form) }}
+    </body>
 </html>
