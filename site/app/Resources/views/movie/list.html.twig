@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Liste des Films</title>
+  </head>
+  <body>
+    <h1>Liste des Films</h>
+      <br /><br />
+    <hr />
+    {% for movie in movies %}
+    <a href={{ path('movie_view', {'id': movie.id}) }}>{{ movie.name }}</a>
+    <p>{{ movie.name }}</p>
+    <p>{{ movie.description }}</p>
+    <p>{{ movie.releaseAt|date('d/m/Y') }}</p>
+    <p>{{ movie.language }}</p>
+    <p>{{ movie.length|date('G:i') }}</p>
+    <p>{{ movie.rating }}</p>
+    <p>{{ movie.genre.label }}</p>
+    <p>{{ movie.director.lastName }}</p>
+    <p>{{ movie.director.firstName }}</p>
+
+    <hr />
+    {% endfor %}
+  </body>
+</html>

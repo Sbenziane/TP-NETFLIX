@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>{{ movie.name }}</title>
+  </head>
+  <body>
+    <h1>{{ movie.name }}</h1>
+    <p>{{ movie.description }}</p>
+    <p>{{ movie.releaseAt|date('d/m/Y') }}</p>
+    <p>{{ movie.language }}</p>
+    <p>{{ movie.length|date('G:i') }}</p>
+    <p>{{ movie.rating }}</p>
+    <p>{{ movie.genre.label }}</p>
+    <p>{{ movie.director.lastName }}</p>
+    <p>{{ movie.director.firstName }}</p>
+  </body>
+</html>
