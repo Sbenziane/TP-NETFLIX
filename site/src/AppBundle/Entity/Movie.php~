@@ -63,4 +63,32 @@ class Movie
      */
     private $rating;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Genre", inversedBy="movies")
+     */
+    private $genre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="string", length=255)
+     */
+    private $link;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cover", type="string", length=255)
+     */
+    private $cover;
+
+    /**
+    *@ORM\OneToOne(targetEntity="AppBundle\Entity\Director")
+    */
+   private $director;
+
+   /**
+    * @ORM\OneToMany(targetEntity="RoleActor", mappedBy="movie")
+    */
+    private $roleActor;
 }

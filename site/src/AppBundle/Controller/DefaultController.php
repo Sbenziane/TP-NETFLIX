@@ -22,7 +22,7 @@ class DefaultController extends Controller
     public function menuAction()
     {
       $menus = ['menu1','menu2','menu3','menu4'];
-      return $this->render('default/index.html.twig', [
+      return $this->render('footer.html.twig', [
           'menus' => $menus,
       ]);
     }

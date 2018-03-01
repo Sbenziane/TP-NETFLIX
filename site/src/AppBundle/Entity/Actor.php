@@ -42,4 +42,131 @@ class Actor
      */
     private $link;
 
+    /**
+     * @ORM\OneToMany(targetEntity="RoleActor", mappedBy="actor")
+     */
+    private $roleActor;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->roleActor = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return Actor
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return Actor
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     *
+     * @return Actor
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * Add roleActor
+     *
+     * @param \AppBundle\Entity\RoleActor $roleActor
+     *
+     * @return Actor
+     */
+    public function addRoleActor(\AppBundle\Entity\RoleActor $roleActor)
+    {
+        $this->roleActor[] = $roleActor;
+
+        return $this;
+    }
+
+    /**
+     * Remove roleActor
+     *
+     * @param \AppBundle\Entity\RoleActor $roleActor
+     */
+    public function removeRoleActor(\AppBundle\Entity\RoleActor $roleActor)
+    {
+        $this->roleActor->removeElement($roleActor);
+    }
+
+    /**
+     * Get roleActor
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRoleActor()
+    {
+        return $this->roleActor;
+    }
 }

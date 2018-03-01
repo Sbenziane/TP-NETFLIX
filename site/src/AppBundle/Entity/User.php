@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var int
@@ -34,6 +36,13 @@ class User
      * @ORM\Column(name="firstName", type="string", length=255)
      */
     private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255)
+     */
+    private $username;
 
     /**
      * @var string
@@ -64,10 +73,11 @@ class User
     private $country;
 
 
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -120,6 +130,30 @@ class User
     public function getFirstName()
     {
         return $this->firstName;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return User
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
     }
 
     /**
@@ -217,4 +251,37 @@ class User
     {
         return $this->country;
     }
+
+
+
+    /**
+     * Get Roles
+     *
+     * @return array
+     */
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
+    }
+
+    /**
+     * Get Salt
+     *
+     * @return null
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     * Get eraseCredentials
+     *
+     * @return
+     */
+    public function eraseCredentials()
+    {
+        return;
+    }
+
 }
