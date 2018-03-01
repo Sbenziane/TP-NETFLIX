@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var int
@@ -24,7 +26,28 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="lastName", type="string", length=255)
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstName", type="string", length=255)
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255)
+     */
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, unique=true)
      */
     private $email;
 
@@ -36,35 +59,101 @@ class User
     private $password;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="nom", type="string", length=100)
+     * @ORM\Column(name="birthday", type="date")
      */
-    private $nom;
+    private $birthday;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=100)
+     * @ORM\Column(name="country", type="string", length=255)
      */
-    private $prenom;
+    private $country;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="numeroTel", type="string", length=255)
-     */
-    private $numeroTel;
 
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return User
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return User
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return User
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
     }
 
     /**
@@ -116,75 +205,83 @@ class User
     }
 
     /**
-     * Set nom
+     * Set birthday
      *
-     * @param string $nom
+     * @param \DateTime $birthday
      *
      * @return User
      */
-    public function setNom($nom)
+    public function setBirthday($birthday)
     {
-        $this->nom = $nom;
+        $this->birthday = $birthday;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get birthday
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getNom()
+    public function getBirthday()
     {
-        return $this->nom;
+        return $this->birthday;
     }
 
     /**
-     * Set prenom
+     * Set country
      *
-     * @param string $prenom
+     * @param string $country
      *
      * @return User
      */
-    public function setPrenom($prenom)
+    public function setCountry($country)
     {
-        $this->prenom = $prenom;
+        $this->country = $country;
 
         return $this;
     }
 
     /**
-     * Get prenom
+     * Get country
      *
      * @return string
      */
-    public function getPrenom()
+    public function getCountry()
     {
-        return $this->prenom;
+        return $this->country;
+    }
+
+
+
+    /**
+     * Get Roles
+     *
+     * @return array
+     */
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
     }
 
     /**
-     * Set numeroTel
+     * Get Salt
      *
-     * @param string $numeroTel
-     *
-     * @return User
+     * @return null
      */
-    public function setNumeroTel($numeroTel)
+    public function getSalt()
     {
-        $this->numeroTel = $numeroTel;
-
-        return $this;
+        return null;
     }
 
     /**
-     * Get numeroTel
+     * Get eraseCredentials
      *
-     * @return string
+     * @return
      */
-    public function getNumeroTel()
+    public function eraseCredentials()
     {
-        return $this->numeroTel;
+        return;
     }
+
 }
-
