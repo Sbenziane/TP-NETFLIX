@@ -72,6 +72,10 @@ class User implements UserInterface
      */
     private $country;
 
+    /**
+     * @ORM\Column(type="bool", name="is_admin", options={"default": false})
+     */
+    protected $isAdmin;
 
 
     /**
@@ -261,7 +265,12 @@ class User implements UserInterface
      */
     public function getRoles()
     {
+      if ($isAdmin === false)
+      {
         return ['ROLE_USER'];
+      }else{
+        return ['ROLE_ADMIIN'];
+           }
     }
 
     /**
