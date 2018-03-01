@@ -8,6 +8,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class SecurityController extends Controller
@@ -37,7 +38,7 @@ class SecurityController extends Controller
   /**
   * @Route("/sign-up", name="register")
   */
-  public function registerAction(Request $request)
+  public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
   {
 
     //// Création du formulaire
@@ -49,8 +50,10 @@ class SecurityController extends Controller
       $form->handleRequest($request);
       if ($form->isSubmitted() && $form->isValid())
       {
-        $movie = $form->getData();
+        $user = $form->getData();
         $em = $this->getDoctrine()->getManager();
+        $password = $user->getPassword();
+        $user->setPassword($passwordEncoder->encodePassword($user, $password));
         $em->persist($user);
         $em->flush();
 
