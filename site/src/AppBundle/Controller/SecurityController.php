@@ -68,4 +68,40 @@ class SecurityController extends Controller
 
     }
 
+    /**
+    * @Route("/user/{id}", name="edit", requirements={"id"="\d+"})
+    */
+    public function editAction(Request $request, $id ,UserPasswordEncoderInterface $passwordEncoder)
+    {
+
+      //// Création du formulaire
+   $em = $this->getDoctrine()->getManager();
+   $user = $em->getRepository(User :: class)
+          ->find($id);
+
+   $form = $this->createForm(UserType:: class, $user);
+
+        //// Validation du formulaire
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+          $user = $form->getData();
+          $em = $this->getDoctrine()->getManager();
+          $password = $user->getPassword();
+          $user->setPassword($passwordEncoder->encodePassword($user, $password));
+          $user->setIsAdmin(false);
+          $em->persist($user);
+          $em->flush();
+
+          return $this->redirectToRoute('film_list');
+        }
+
+        //// Return pour afficher dans le template
+        return $this->render('security/register.html.twig', [
+          'form' => $form->createView(),
+        ]);
+
+      }
+
+
 }
