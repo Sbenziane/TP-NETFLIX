@@ -24,41 +24,6 @@ class Movie
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text")
-     */
-    private $description;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="release_at", type="date")
-     */
-    private $releaseAt;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="language", type="string", length=255)
-     */
-    private $language;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="length", type="time")
-     */
-    private $length;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="rating", type="float", precision=2, scale=4)
      */
     private $rating;
@@ -71,9 +36,33 @@ class Movie
     /**
      * @var string
      *
-     * @ORM\Column(name="link", type="string", length=255)
+     * @ORM\Column(name="linkMovie", type="string", length=255)
      */
-    private $link;
+
+    private $linkMovie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="linkImg", type="string", length=255)
+     */
+
+    private $linkImg;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="linkTrailer", type="string", length=255)
+     */
+
+    private $linkTrailer;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titleSaga", type="string", length=255)
+     */
+    private $titleSaga;
 
     /**
      * @var string
@@ -91,6 +80,11 @@ class Movie
     * @ORM\OneToMany(targetEntity="RoleActor", mappedBy="movie")
     */
     private $roleActor;
+
+    /**
+     * @ORM\OneToOne(targetEntity="DescriptionSheet")
+     */
+    private $DescriptionSheet;
     /**
      * Constructor
      */
@@ -109,125 +103,6 @@ class Movie
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Movie
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Movie
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set releaseAt
-     *
-     * @param \DateTime $releaseAt
-     *
-     * @return Movie
-     */
-    public function setReleaseAt($releaseAt)
-    {
-        $this->releaseAt = $releaseAt;
-
-        return $this;
-    }
-
-    /**
-     * Get releaseAt
-     *
-     * @return \DateTime
-     */
-    public function getReleaseAt()
-    {
-        return $this->releaseAt;
-    }
-
-    /**
-     * Set language
-     *
-     * @param string $language
-     *
-     * @return Movie
-     */
-    public function setLanguage($language)
-    {
-        $this->language = $language;
-
-        return $this;
-    }
-
-    /**
-     * Get language
-     *
-     * @return string
-     */
-    public function getLanguage()
-    {
-        return $this->language;
-    }
-
-    /**
-     * Set length
-     *
-     * @param \DateTime $length
-     *
-     * @return Movie
-     */
-    public function setLength($length)
-    {
-        $this->length = $length;
-
-        return $this;
-    }
-
-    /**
-     * Get length
-     *
-     * @return \DateTime
-     */
-    public function getLength()
-    {
-        return $this->length;
-    }
 
     /**
      * Set rating
@@ -254,27 +129,76 @@ class Movie
     }
 
     /**
-     * Set link
+     * Set linkMovie
      *
-     * @param string $link
+     * @param string $linkMovie
      *
      * @return Movie
      */
-    public function setLink($link)
+    public function setLinkMovie($linkMovie)
     {
-        $this->link = $link;
+        $this->linkMovie = $linkMovie;
 
         return $this;
     }
 
     /**
-     * Get link
+     * Get linkMovie
      *
      * @return string
      */
-    public function getLink()
+    public function getLinkMovie()
     {
-        return $this->link;
+        return $this->linkMovie;
+    }
+
+
+    /**
+     * Set linkImg
+     *
+     * @param string $linkImg
+     *
+     * @return Movie
+     */
+    public function setLinkImg($linkImg)
+    {
+        $this->linkImg = $linkImg;
+
+        return $this;
+    }
+
+    /**
+     * Get linkImg
+     *
+     * @return string
+     */
+    public function getLinkImg()
+    {
+        return $this->linkImg;
+    }
+
+    /**
+     * Set linkTrailer
+     *
+     * @param string $linkTrailer
+     *
+     * @return Movie
+     */
+    public function setLink($linkTrailer)
+    {
+        $this->linkTrailer = $linkTrailer;
+
+        return $this;
+    }
+
+    /**
+     * Get linkTrailer
+     *
+     * @return string
+     */
+    public function getLinkTrailer()
+    {
+        return $this->linkTrailer;
     }
 
     /**
@@ -284,6 +208,32 @@ class Movie
      *
      * @return Movie
      */
+
+    /**
+     * Set titleSaga
+     *
+     * @param string $titleSaga
+     *
+     * @return Movie
+     */
+    public function setTitle($titleSaga)
+    {
+        $this->titleSaga = $titleSaga;
+
+        return $this;
+    }
+
+    /**
+     * Get titleSaga
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->titleSaga;
+    }
+
+
     public function setCover($cover)
     {
         $this->cover = $cover;
