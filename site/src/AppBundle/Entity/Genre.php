@@ -28,13 +28,8 @@ class Genre
      */
     private $label;
 
-    // /**
-    //  * @ORM\OneToMany(targetEntity="AppBundle\Entity\Movie",  mappedBy="genre")
-    //  */
-    // private $movies;
-
     /**
-    * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Movie", cascade={"persist"})
+    * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Movie", mappedBy="genres")
     */
     private $movies;
     /**

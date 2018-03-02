@@ -30,7 +30,7 @@ class Movie
     private $rating;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre", inversedBy="movies")
      */
     private $genres;
 
