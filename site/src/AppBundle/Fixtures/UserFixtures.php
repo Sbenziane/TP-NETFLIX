@@ -19,6 +19,7 @@ class UserFixtures extends Fixture
 
 	public function load(ObjectManager $manager)
 	{
+
 	$user = new User();
 
 	$user
@@ -33,16 +34,19 @@ class UserFixtures extends Fixture
 
 		$admin = new User();
 
-		$user
+		$admin
 			->setLastName('lastName #2')
 			->setFirstName( 'firstName #3')
 	    ->setUserName('admin')
-			->setEmail('user@test.fr')
+				->setEmail('admin@test.fr')
 			->setPassword($this->passwordEncoder->encodePassword($user, 'admin'))
 			->setBirthday(new \DateTime())
 	    ->setCountry('France')
-			->setIsAdmin(false);		
+			->setIsAdmin(false);
+
 	$manager->persist($user);
+	$manager->persist($admin);
+
 	$manager->flush();
 	}
 }
