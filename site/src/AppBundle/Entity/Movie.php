@@ -32,7 +32,7 @@ class Movie
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre")
      */
-    private $genre;
+    private $genres;
 
     /**
      * @var string
@@ -393,5 +393,39 @@ class Movie
     public function getDescriptionSheet()
     {
         return $this->descriptionSheet;
+    }
+
+    /**
+     * Add genre
+     *
+     * @param \AppBundle\Entity\Genre $genre
+     *
+     * @return Movie
+     */
+    public function addGenre(\AppBundle\Entity\Genre $genre)
+    {
+        $this->genres[] = $genre;
+
+        return $this;
+    }
+
+    /**
+     * Remove genre
+     *
+     * @param \AppBundle\Entity\Genre $genre
+     */
+    public function removeGenre(\AppBundle\Entity\Genre $genre)
+    {
+        $this->genres->removeElement($genre);
+    }
+
+    /**
+     * Get genres
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGenres()
+    {
+        return $this->genres;
     }
 }
