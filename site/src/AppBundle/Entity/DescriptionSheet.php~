@@ -56,6 +56,11 @@ class DescriptionSheet
     private $description;
 
     /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Movie")
+     */
+    private $DescriptionSheet;
+
+    /**
      * Get id
      *
      * @return int
@@ -183,29 +188,5 @@ class DescriptionSheet
     public function getDescriptionSheet()
     {
         return $this->DescriptionSheet;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return DescriptionSheet
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 }

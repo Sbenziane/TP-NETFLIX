@@ -5,7 +5,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use AppBundle\ImageUpload;
-use AppBundle\Entity\Film;
+use AppBundle\Entity\Movie;
 
 class ImageUploadListener
 {
@@ -33,10 +33,10 @@ class ImageUploadListener
     private function uploadFile($entity)
     {
 
-        if (!$entity instanceof Film) {
+        if (!$entity instanceof Movie) {
             return;
         }
-        $file = $entity->getImage();
+        $file = $entity->getLinkImg();
 
         // only upload new files
         if (!$file instanceof UploadedFile) {
@@ -44,6 +44,6 @@ class ImageUploadListener
         }
 
         $fileName = $this->uploader->upload($file);
-        $entity->setImage($fileName);
+        $entity->setLinkImg($fileName);
     }
 }

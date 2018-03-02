@@ -1,4 +1,4 @@
-<!-- app/Ressources/views/film/editFilm.html.twig -->
+<!-- app/Ressources/views/movie/editMovie.html.twig -->
 {% extends 'layout.html.twig' %}
 
 {% block content %}
@@ -6,9 +6,9 @@
     {{ form_start(formEdit) }}
     {{ form_errors(formEdit) }}
     <div>
-        {{ form_label(formEdit.video) }}
-        {{ form_errors(formEdit.video) }}
-        {{ form_widget(formEdit.video) }}
+        {{ form_label(formEdit.rating) }}
+        {{ form_errors(formEdit.rating) }}
+        {{ form_widget(formEdit.rating) }}
     </div>
     <div>
         {{ form_row(form.image) }}

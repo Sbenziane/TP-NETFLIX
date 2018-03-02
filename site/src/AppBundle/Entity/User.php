@@ -73,7 +73,7 @@ class User implements UserInterface
     private $country;
 
     /**
-     * @ORM\Column(type="bool", name="is_admin", options={"default": false})
+     * @ORM\Column(type="boolean", name="is_admin", options={"default": false})
      */
     protected $isAdmin;
 

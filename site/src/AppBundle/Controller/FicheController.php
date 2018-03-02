@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\FicheDescription;
+use AppBundle\Entity\DescriptionSheet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -14,7 +14,7 @@ class FicheController extends Controller
     public function listAffiche()
     {
         $em = $this->getDoctrine()->getManager();
-        $fiches = $em->getRepository(FicheDescription:: class)
+        $fiches = $em->getRepository(DescriptionSheet:: class)
             ->findAll();
         return $this->render('fiche/Lesfiches.html.twig' , [
             'fiches' => $fiches
@@ -28,7 +28,7 @@ class FicheController extends Controller
     public function viewAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $fiche = $em->getRepository(FicheDescription:: class)
+        $fiche = $em->getRepository(DescriptionSheet:: class)
             ->find($id);
         return $this->render('fiche/fiche.html.twig' , [
             'fiche' => $fiche

@@ -43,9 +43,10 @@ class Actor
     private $link;
 
     /**
-     * @ORM\OneToMany(targetEntity="RoleActor", mappedBy="actor")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\RoleActor", mappedBy="actor")
      */
     private $roleActor;
+
     /**
      * Constructor
      */

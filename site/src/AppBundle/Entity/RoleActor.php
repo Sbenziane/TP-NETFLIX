@@ -29,12 +29,12 @@ class RoleActor
     private $role;
 
     /**
-    *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Actor")
+    *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Actor", inversedBy="roleActor")
     */
     private $actor;
 
     /**
-    *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Movie")
+    *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Movie", inversedBy="roleActor")
     */
     private $movie;
 

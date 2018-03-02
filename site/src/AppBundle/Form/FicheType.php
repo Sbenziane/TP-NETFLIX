@@ -1,7 +1,8 @@
 <?php
 namespace AppBundle\Form;
 
-use AppBundle\Entity\FicheDescription;
+use AppBundle\Entity\DescriptionSheet;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -14,16 +15,18 @@ class FicheType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre', TextType::class)
+            ->add('title', TextType::class)
+            ->add('release_at' , DateType::class)
+            ->add('language' , TextType::class)
+            ->add('duration' , TimeType::class)
             ->add('description', TextareaType::class)
-           /* ->add('date', DateType::class)*/
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => FicheDescription::class
+            'data_class' => DescriptionSheet::class
         ));
     }
 }

@@ -1,9 +1,9 @@
 <?php
 // src/AppBundle/Manager/ArticleManager.php
 namespace AppBundle\Manager;
-use AppBundle\Entity\Film;
+use AppBundle\Entity\Movie;
 use Doctrine\ORM\EntityManagerInterface;
-class FilmManager
+class MovieManager
 {
     /**
      * @var EntityManagerInterface
@@ -15,19 +15,19 @@ class FilmManager
     }
     public function getArticles()
     {
-        return $this->em->getRepository(Film:: class)
+        return $this->em->getRepository(Movie:: class)
             ->findAll();
     }
     public function getArticle(int $id)
     {
-        return $this->em->getRepository(Film:: class)
+        return $this->em->getRepository(Movie:: class)
             ->find($id);
     }
-    public function getCreateArticle(Film $film)
+    public function getCreateArticle(Movie $movie)
     {
-        $this->em->persist($film);
+        $this->em->persist($movie);
         $this->em->flush();
 
-        return $film;
+        return $movie;
     }
 }

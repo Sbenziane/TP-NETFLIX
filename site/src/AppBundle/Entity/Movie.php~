@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * movie
+ * Movie
  *
  * @ORM\Table(name="movie")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MovieRepository")
@@ -36,22 +36,25 @@ class Movie
     /**
      * @var string
      *
-     * @ORM\Column(name="linkMovie", type="string", length=255, nullable=true)
+     * @ORM\Column(name="linkMovie", type="string", length=255)
      */
+
     private $linkMovie;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="linkImg", type="string", length=255, nullable=true)
+     * @ORM\Column(name="linkImg", type="string", length=255)
      */
+
     private $linkImg;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="linkTrailer", type="string", length=255, nullable=true)
+     * @ORM\Column(name="linkTrailer", type="string", length=255)
      */
+
     private $linkTrailer;
 
     /**
@@ -69,21 +72,19 @@ class Movie
     private $cover;
 
     /**
-    *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Director", inversedBy="movies")
+    *@ORM\OneToOne(targetEntity="AppBundle\Entity\Director")
     */
-    private  $director;
+   private $director;
 
    /**
     * @ORM\OneToMany(targetEntity="RoleActor", mappedBy="movie")
     */
-    private  $roleActor;
+    private $roleActor;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\DescriptionSheet", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToOne(targetEntity="DescriptionSheet")
      */
-    private  $descriptionSheet;
-
+    private $DescriptionSheet;
     /**
      * Constructor
      */
@@ -330,67 +331,5 @@ class Movie
     public function getRoleActor()
     {
         return $this->roleActor;
-    }
-
-    /**
-     * Set linkTrailer
-     *
-     * @param string $linkTrailer
-     *
-     * @return Movie
-     */
-    public function setLinkTrailer($linkTrailer)
-    {
-        $this->linkTrailer = $linkTrailer;
-
-        return $this;
-    }
-
-    /**
-     * Set titleSaga
-     *
-     * @param string $titleSaga
-     *
-     * @return Movie
-     */
-    public function setTitleSaga($titleSaga)
-    {
-        $this->titleSaga = $titleSaga;
-
-        return $this;
-    }
-
-    /**
-     * Get titleSaga
-     *
-     * @return string
-     */
-    public function getTitleSaga()
-    {
-        return $this->titleSaga;
-    }
-
-    /**
-     * Set descriptionSheet
-     *
-     * @param \AppBundle\Entity\DescriptionSheet $descriptionSheet
-     *
-     * @return Movie
-     */
-    public function setDescriptionSheet(\AppBundle\Entity\DescriptionSheet $descriptionSheet = null)
-    {
-        $this->descriptionSheet = $descriptionSheet;
-
-        return $this;
-    }
-
-    /**
-     * Get descriptionSheet
-     *
-     * @return \AppBundle\Entity\DescriptionSheet
-     */
-    public function getDescriptionSheet()
-    {
-        return $this->descriptionSheet;
     }
 }

@@ -12,8 +12,8 @@ class layoutController extends Controller
                 'label' => 'Accueil'
 
             ], [
-                'path' => 'film_list',
-                'label' => 'Film'
+                'path' => 'movie_list',
+                'label' => 'movie'
             ],
         ];
 

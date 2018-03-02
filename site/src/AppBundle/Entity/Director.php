@@ -36,7 +36,7 @@ class Director
     private $firstName;
 
     /**
-    *@ORM\OneToMany(targetEntity="AppBundle\Entity\Movie", mappedBy="movie") 
+    *@ORM\OneToMany(targetEntity="AppBundle\Entity\Movie", mappedBy="director")
     */
    private $movies;
 
