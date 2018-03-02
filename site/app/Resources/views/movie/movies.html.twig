@@ -21,5 +21,10 @@
             <p>{{ movie.descriptionSheet.duration|date('H:i:s') }}</p>
             <p>{{ movie.descriptionSheet.description }}</p>
         {% endif %}
+
+        {% for genre in movie.genres %}
+        <p>{{ genre.label }}</p>
+        {% endfor %}
     {% endfor %}
+
 {% endblock %}
