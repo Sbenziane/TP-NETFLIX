@@ -84,12 +84,12 @@ class Movie
      * @ORM\JoinColumn(nullable=true)
      */
     private  $descriptionSheet;
-
     /**
      * Constructor
      */
     public function __construct()
     {
+        $this->genres = new \Doctrine\Common\Collections\ArrayCollection();
         $this->roleActor = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -102,7 +102,6 @@ class Movie
     {
         return $this->id;
     }
-
 
     /**
      * Set rating
@@ -152,7 +151,6 @@ class Movie
         return $this->linkMovie;
     }
 
-
     /**
      * Set linkImg
      *
@@ -184,7 +182,7 @@ class Movie
      *
      * @return Movie
      */
-    public function setLink($linkTrailer)
+    public function setLinkTrailer($linkTrailer)
     {
         $this->linkTrailer = $linkTrailer;
 
@@ -202,21 +200,13 @@ class Movie
     }
 
     /**
-     * Set cover
-     *
-     * @param string $cover
-     *
-     * @return Movie
-     */
-
-    /**
      * Set titleSaga
      *
      * @param string $titleSaga
      *
      * @return Movie
      */
-    public function setTitle($titleSaga)
+    public function setTitleSaga($titleSaga)
     {
         $this->titleSaga = $titleSaga;
 
@@ -228,12 +218,18 @@ class Movie
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitleSaga()
     {
         return $this->titleSaga;
     }
 
-
+    /**
+     * Set cover
+     *
+     * @param string $cover
+     *
+     * @return Movie
+     */
     public function setCover($cover)
     {
         $this->cover = $cover;
@@ -252,27 +248,37 @@ class Movie
     }
 
     /**
-     * Set genre
+     * Add genre
      *
      * @param \AppBundle\Entity\Genre $genre
      *
      * @return Movie
      */
-    public function setGenre(\AppBundle\Entity\Genre $genre = null)
+    public function addGenre(\AppBundle\Entity\Genre $genre)
     {
-        $this->genre = $genre;
+        $this->genres[] = $genre;
 
         return $this;
     }
 
     /**
-     * Get genre
+     * Remove genre
      *
-     * @return \AppBundle\Entity\Genre
+     * @param \AppBundle\Entity\Genre $genre
      */
-    public function getGenre()
+    public function removeGenre(\AppBundle\Entity\Genre $genre)
     {
-        return $this->genre;
+        $this->genres->removeElement($genre);
+    }
+
+    /**
+     * Get genres
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGenres()
+    {
+        return $this->genres;
     }
 
     /**
@@ -334,44 +340,6 @@ class Movie
     }
 
     /**
-     * Set linkTrailer
-     *
-     * @param string $linkTrailer
-     *
-     * @return Movie
-     */
-    public function setLinkTrailer($linkTrailer)
-    {
-        $this->linkTrailer = $linkTrailer;
-
-        return $this;
-    }
-
-    /**
-     * Set titleSaga
-     *
-     * @param string $titleSaga
-     *
-     * @return Movie
-     */
-    public function setTitleSaga($titleSaga)
-    {
-        $this->titleSaga = $titleSaga;
-
-        return $this;
-    }
-
-    /**
-     * Get titleSaga
-     *
-     * @return string
-     */
-    public function getTitleSaga()
-    {
-        return $this->titleSaga;
-    }
-
-    /**
      * Set descriptionSheet
      *
      * @param \AppBundle\Entity\DescriptionSheet $descriptionSheet
@@ -393,39 +361,5 @@ class Movie
     public function getDescriptionSheet()
     {
         return $this->descriptionSheet;
-    }
-
-    /**
-     * Add genre
-     *
-     * @param \AppBundle\Entity\Genre $genre
-     *
-     * @return Movie
-     */
-    public function addGenre(\AppBundle\Entity\Genre $genre)
-    {
-        $this->genres[] = $genre;
-
-        return $this;
-    }
-
-    /**
-     * Remove genre
-     *
-     * @param \AppBundle\Entity\Genre $genre
-     */
-    public function removeGenre(\AppBundle\Entity\Genre $genre)
-    {
-        $this->genres->removeElement($genre);
-    }
-
-    /**
-     * Get genres
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getGenres()
-    {
-        return $this->genres;
     }
 }

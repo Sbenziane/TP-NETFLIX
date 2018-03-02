@@ -25,7 +25,7 @@ class MovieType extends AbstractType
           //  ->add('linkTrailer', FileType::class , array('label' => 'Bande annonce'))
             ->add('titleSaga', TextType::class)
             ->add('cover', TextType::class)
-            ->add('genre', EntityType::class, [
+            ->add('genres', EntityType::class, [
                 'class' => Genre::class,
                 'choice_label' => 'label',
                 'multiple' => true,
