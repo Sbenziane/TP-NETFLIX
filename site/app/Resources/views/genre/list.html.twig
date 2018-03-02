@@ -4,8 +4,10 @@
   </head>
   <body>
     {% for genre in genres %}
-    <a href={{ path('genre_edit', {'id': genre.id}) }}>{{ genre.label }}</a>
     <p>{{ genre.label }}</p>
+    <a href={{ path('genre_edit', {'id': genre.id}) }}>Modifier le genre {{ genre.label }}</a>
+    <br />
+    <a href={{ path('genre_delete', {'id': genre.id}) }}> Supprimer {{ genre.label }}</a>
     <hr />
     {% endfor %}
   </body>

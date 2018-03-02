@@ -20,7 +20,7 @@ class GenreController extends Controller
 {
 
     /**
-   * @Route("/genres", name="genre_list")
+   * @Route("/admin/genres", name="genre_list")
    */
   public function listAction(GenreManager $manager)
   {
@@ -31,7 +31,7 @@ class GenreController extends Controller
   }
 
   /**
-  * @Route("/genre/add/", name="article_add")
+  * @Route("/admin/genre/add/", name="article_add")
   */
   public function addAction(Request $request)
   {
@@ -58,7 +58,7 @@ class GenreController extends Controller
     }
 
     /**
-     * @Route("/genre/edit/{id}", name="genre_edit")
+     * @Route("/admin/genre/edit/{id}", name="genre_edit")
      */
     public function editAction(int $id,Request $request)
     {
@@ -78,13 +78,25 @@ class GenreController extends Controller
             $em->persist($genre);
             $em->flush();
 
-            return $this->redirectToRoute('genre_edit',[
-              'id' => $id,
-            ]);
+            return $this->redirectToRoute('genre_list');
           }
 
       return $this->render('genre/add.html.twig', [
           'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/admin/delete/genre/{id}", name="genre_delete", requirements={"id"="\d+"}))
+     */
+    public function deleteAction(Request $request, int $id)
+    {
+      $em = $this->getDoctrine()->getManager();
+      $genre = $em->getRepository(Genre :: class)
+          ->find($id);
+      $em->remove($genre);
+      $em->flush();
+      return $this->redirectToRoute('genre_list');
+    }
+
 }

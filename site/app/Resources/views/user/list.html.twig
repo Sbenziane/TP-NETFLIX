@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Liste des Utilisateurs</title>
+  </head>
+  <body>
+    <hr />
+    {% for user in users %}
+
+    <p>{{ user.lastName }}</p>
+    <p>{{ user.firstName }}</p>
+    <p>{{ user.username }}</p>
+    <p>{{ user.email }}</p>
+    <p>{{ user.birthday|date('d/m/Y') }}</p>
+        <a href={{ path('user_delete', {'id': user.id}) }}> Supprimer cette Utilisateur</a>
+        <br />
+    <hr />
+    <br />
+    <hr />
+    {% endfor %}
+  </body>
+</html>
