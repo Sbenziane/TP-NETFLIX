@@ -17,7 +17,7 @@ class MovieType extends AbstractType
         $builder
             ->add('descriptionSheet' , FicheType::class)
             ->add('rating', NumberType::class)
-            //->add('linkMovie', FileType::class , array('label' => 'Film'))
+            ->add('linkMovie', FileType::class , array('label' => 'Film'))
             ->add('linkImg',FileType::class , array('label' => 'Image(JPG)') )
           //  ->add('linkTrailer', FileType::class , array('label' => 'Bande annonce'))
             ->add('titleSaga', TextType::class)

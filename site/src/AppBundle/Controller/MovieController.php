@@ -83,8 +83,11 @@
         public function EditAction(int $id , Request $request)
         {
             $em = $this->getDoctrine()->getManager();
+            /** @var Movie $movie */
             $movie = $em->getRepository(Movie::class)
                 ->find($id);
+
+            $movie->setLinkImg(null);
 
             //dump($movie);
 
@@ -124,9 +127,23 @@
             return new BinaryFileResponse($filePath);
         }
 
+        /**
+         * @Route("/movie/{id}/movieView" , name="video_view")
+         *
+         */
+        public function MovieViewAction($id)
+        {
+            $em = $this->getDoctrine()->getManager();
+            /** @var Movie $movie */
+            $movie = $em->getRepository(Movie::class)
+                ->find($id);
+            $filePath = $this->getParameter('videos_directory')."/".$movie->getLinkMovie();
+            return new BinaryFileResponse($filePath);
+        }
+
         public function search($MySearch)
         {
-            return recherche($MySearch);
+//            return recherche($MySearch);
         }
 
     }

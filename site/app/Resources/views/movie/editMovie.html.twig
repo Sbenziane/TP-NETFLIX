@@ -1,4 +1,3 @@
-<!-- app/Ressources/views/movie/editMovie.html.twig -->
 {% extends 'layout.html.twig' %}
 
 {% block content %}
@@ -9,9 +8,6 @@
         {{ form_label(formEdit.rating) }}
         {{ form_errors(formEdit.rating) }}
         {{ form_widget(formEdit.rating) }}
-    </div>
-    <div>
-        {{ form_row(form.image) }}
     </div>
     {{ form_end(formEdit) }}
 {% endblock %}

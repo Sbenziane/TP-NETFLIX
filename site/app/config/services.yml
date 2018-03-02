@@ -36,7 +36,15 @@ services:
     AppBundle\ImageUpload:
         arguments: ['%images_directory%']
 
+    AppBundle\VideoUpload:
+        arguments: ['%videos_directory%']
+
     AppBundle\EventListener\ImageUploadListener:
+            tags:
+                - { name: doctrine.event_listener, event: prePersist }
+                - { name: doctrine.event_listener, event: preUpdate }
+
+    AppBundle\EventListener\MovieUploadListener:
             tags:
                 - { name: doctrine.event_listener, event: prePersist }
                 - { name: doctrine.event_listener, event: preUpdate }

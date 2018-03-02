@@ -4,7 +4,13 @@
     <h1>{{ movie.titleSaga }}</h1>
     <p>{{ movie.cover }}</p>
     <p>{{ movie.rating }}</p>
-    <img src="{{ path('image_view' , {'id': movie.id}) }}" />
+    <img src="{{ path('image_view' , {'id': movie.id}) }}" width="25%" height="300"/>
+
+    <video width="400" height="222" controls="controls">
+        <source src="{{ path( 'video_view' , {'id': movie.id}) }}" type="video/mp4" />
+
+    </video>
+
     <br/>
     {% if movie.descriptionSheet is not null %}
         <p>{{ movie.descriptionSheet.title }}</p>
