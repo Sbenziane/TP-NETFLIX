@@ -24,13 +24,14 @@ class UserManager {
   {
     $user = new User();
     $password = $this->passwordEncoder->encodePassword($user, $password);
+    $date = date_create_from_format('d/m/Y', $birthday);
     $user
        ->setLastName($lastName)
        ->setFirstName($firstName)
        ->setUsername($username)
        ->setEmail($email)
        ->setPassword($password)
-       ->setBirthday($birthday)
+       ->setBirthday($date)
        ->setCountry($country)
        ->setIsAdmin(true);
     $this->em->persist($user);
