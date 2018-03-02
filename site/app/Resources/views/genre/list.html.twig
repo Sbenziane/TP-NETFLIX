@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title>Liste des Genres</title>
+  </head>
+  <body>
+    {% for genre in genres %}
+    <a href={{ path('genre_edit', {'id': genre.id}) }}>{{ genre.label }}</a>
+    <p>{{ genre.label }}</p>
+    <hr />
+    {% endfor %}
+  </body>
+</html>

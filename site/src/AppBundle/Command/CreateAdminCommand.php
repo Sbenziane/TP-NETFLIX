@@ -24,30 +24,33 @@ class CreateAdminCommand extends Command
   protected function configure()
   {
      $this   // le nom de la commande (la partie après "bin/console")
-        ->setName('app:create:user')
+        ->setName('app:create:admin')
         // Une description courte, affichée lors de l'éxécution de la       // commande "php bin/console list"
-        ->setDescription('Create a user.')
+        ->setDescription('Create a admin.')
         // La description complète affichée lorsque l'on ajoute       // l'option "--help"
-        ->setHelp('This command allow you to create a user')
+        ->setHelp('This command allow you to create a admin')
         ->addArgument( 'lastName', InputArgument::REQUIRED, 'User lastName.')
         ->addArgument( 'firstName', InputArgument::REQUIRED, 'User firstName.')
+        ->addArgument( 'username', InputArgument::REQUIRED, 'User username.')
         ->addArgument( 'email', InputArgument::REQUIRED, 'User email.')
         ->addArgument( 'password', InputArgument::REQUIRED, 'User password.')
+        ->addArgument( 'birthday', InputArgument::REQUIRED, 'User birthday.')
+        ->addArgument( 'country', InputArgument::REQUIRED, 'User country.')
         ;
   }
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
    $output->writeln([
-                'Create User',
+                'Create Admin',
                 '==============',
                 '',
               ]);
   $output->writeln('Whoa!');
   $output->write('You are about to ');
-  $output->write('create a user.');
-  $this->userManager->createUserFromCommand($input->getArgument('lastName'), $input->getArgument('firstName'), $input->getArgument('email'), $input->getArgument('password'));
-  $output->writeln('User successfully created!');
+  $output->write('create a admin.');
+  $this->userManager->createAdminFromCommand($input->getArgument('lastName'), $input->getArgument('firstName'), $input->getArgument('username'),$input->getArgument('email'), $input->getArgument('password'), $input->getArgument('birthday'), $input->getArgument('country'));
+  $output->writeln('Admin successfully created!');
   }
 
 }

@@ -20,18 +20,20 @@ class UserManager {
    $this->passwordEncoder = $passwordEncoder;
  }
 
-  public function createUserFromCommand($lastName ,$firstName, $email, $password, $birthday, $country)
+  public function createAdminFromCommand($lastName ,$firstName, $username, $email, $password, $birthday, $country)
   {
     $user = new User();
     $password = $this->passwordEncoder->encodePassword($user, $password);
+    $date = date_create_from_format('d/m/Y', $birthday);
     $user
        ->setLastName($lastName)
        ->setFirstName($firstName)
+       ->setUsername($username)
        ->setEmail($email)
        ->setPassword($password)
-       ->setBirthday($birthday)
-       ->setCountry($country);
-
+       ->setBirthday($date)
+       ->setCountry($country)
+       ->setIsAdmin(true);
     $this->em->persist($user);
     $this->em->flush();
   }
