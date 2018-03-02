@@ -269,7 +269,7 @@ class User implements UserInterface
       {
         return ['ROLE_USER'];
       }else{
-        return ['ROLE_ADMIIN'];
+        return ['ROLE_ADMIN'];
            }
     }
 
